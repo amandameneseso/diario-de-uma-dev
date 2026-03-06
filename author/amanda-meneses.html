@@ -40,15 +40,16 @@
   <div id="sidebar">
     <ul>
 	<li>
-	    <h3>Pages</h3>
+	    <h3>Páginas</h3>
 	    <ul>
 	    </ul>
 	</li>
 	<li>
-            <h3>Categories</h3>
+            <h3>Categorias</h3>
             <ul>
 		     <li ><a href="https://amandameneseso.github.io/diario-de-uma-dev/category/computacao.html">Computação</a></li>
 		     <li ><a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></li>
+		     <li ><a href="https://amandameneseso.github.io/diario-de-uma-dev/category/utilidades.html">Utilidades</a></li>
 	    </ul>
 	</li>
         <li>
@@ -61,6 +62,9 @@
         <li>
             <h3>Tags</h3>
             <ul>
+                    <li><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/nodejs.html">node.js</a></li>
+                    <li><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/back-end.html">back-end</a></li>
+                    <li><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/express.html">express</a></li>
                     <li><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/react.html">react</a></li>
                     <li><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/front-end.html">front-end</a></li>
                     <li><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/pelican.html">pelican</a></li>
@@ -78,705 +82,653 @@
   	
     <div class="blogItem">
     
-      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-react.html">Primeiros passos com React</a></h2>
-      <h3>Thu 06 November 2025</h3>
+      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/aprofundando-em-nodejs-e-express.html">✧ Aprofundando em Node.js e Express</a></h2>
+      <h3>Fri 06 March 2026</h3>
       
-      <p>Começar a estudar React pode parecer como tentar montar um quebra-cabeça sem a imagem da caixa. Muitos tutoriais pulam etapas ou assumem que você já entende o básico. Como eu acabei de passar por essa fase, decidi criar o guia que eu gostaria de ter tido. Este artigo é um passo a passo estruturado, focado em construir uma base sólida, desde a configuração do ambiente até o roteamento com react-router.</p>
-<p>Notícia: <a href="#">Pesquisadores afirmam que React foi criado para testar a paciência humana.</a></p>
-<p>React é uma biblioteca JavaScript de código aberto utilizada para construir interfaces de usuário (UI) dinâmicas e interativas. Ele é muito usado para criar aplicações web de página única (SPAs - Single Page Applications), onde o conteúdo muda sem precisar recarregar toda a página.</p>
-<h3><strong>Características</strong></h3>
-<ul>
-<li><strong>Baseado em componentes:</strong> A arquitetura é centrada em componentes. Cada componente encapsula sua própria lógica e renderização, tornando o código mais modular, reutilizável e fácil de manter. Imagine que você está construindo uma casa com peças de Lego. Cada peça é um componente reutilizável com sua própria função (uma janela, uma porta, uma parede). No React, esses "blocos de Lego" são os componentes, que podem ser combinados e aninhados para criar interfaces complexas.</li>
-<li><strong>DOM virtual:</strong> O React utiliza um DOM (Document Object Model) virtual, que é uma representação na memória da estrutura da página. Quando há mudanças nos dados, o React primeiro compara o DOM virtual com o DOM real e atualiza apenas as partes que realmente mudaram, otimizando o desempenho e tornando as atualizações mais rápidas.</li>
-<li><strong>JSX:</strong> O React utiliza uma extensão de sintaxe chamada JSX (JavaScript XML), que permite escrever uma estrutura semelhante ao HTML dentro do seu código JavaScript. Isso torna mais intuitivo descrever a aparência dos componentes.</li>
-</ul>
-<p>Agora, nosso objetivo vai ser criar um projeto com React do zero, passo a passo. Para isso, criaremos uma pasta e a abriremos com o VS Code.</p>
-<h3><strong>Passo 1: Instalando o Node.js e yarn</strong></h3>
-<p>O React é construído em JavaScript, e precisamos do Node.js (ambiente de execução de JavaScript) e do seu gerenciador de pacotes (npm ou yarn) para criar e gerenciar nosso projeto.</p>
-<p><strong>Para verificar se já estão instalados,</strong> abra seu terminal (no Windows, pode ser o "Prompt de Comando" ou o "PowerShell"; no VS Code, pressione “ctrl + aspas” para abrir o terminal). Digite os seguintes comandos, um por vez, e pressione Enter após cada um:</p>
-<div class="highlight"><pre><span></span><code>node<span class="w"> </span>-v
-npm<span class="w"> </span>-v
+      <p><strong>Entendendo o Repository Pattern</strong></p>
+<p>Continuando o artigo anterior (<a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-nodejs-e-express.html">Primeiros passos com Node.js e Express</a>), note que colocamos os dados dentro do Controller. Isso viola um pouco a separação de responsabilidades. O Controller deveria apenas gerenciar a regra, não guardar os dados. Em vez disso, ele deve pedir os dados.</p>
+<p>O Repository Pattern é um padrão de projeto que cria uma camada intermediária chamada <strong>Repository</strong>, que é responsável <strong>apenas por acessar os dados</strong> e que atua como uma camada de abstração entre a lógica de negócios (controller) de uma aplicação e a fonte de dados (banco de dados, seja ela um array, SQL, NoSQL, .json, API). Ele serve de mediador entre as camadas de domínio e de mapeamento de dados, permitindo um código mais limpo ao separar a lógica de acesso a dados em uma classe centralizada e especializada. Isso promove a testabilidade, reduz a duplicação e isola os objetos de domínio.</p>
+<p>Antes: controller ↔ data source</p>
+<p>Repository Pattern: controller ↔ repository ↔ data source</p>
+<p>Dessa forma, por exemplo, se começamos um projeto utilizados um mock de dados e futuramente trocamos para um banco SQL, não precisaremos mexer no controller onde estão as regras de negócio, apenas refatoramos o repository.</p>
+<p><strong>Criando o Repository de Contatos</strong></p>
+<p>Vamos começar trabalhando com um mock, para não ter que ir para SQL agora e para vermos a real utilidade do repository pattern, pois posteriormente vamos trabalhar com Postgres.</p>
+<p>Para o mock de dados, em vez de números sequenciais para os IDs, usaremos hash por meio de um padrão chamado Universal Unique ID, instalando ele com o comando:</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>add<span class="w"> </span>uuidv4
 </code></pre></div>
 
-<ul>
-<li>Se aparecerem números de versão, significa que o Node.js e o npm já estão instalados no seu computador.</li>
-<li><strong>Instalando (caso não estejam instalados):</strong> Se algum dos comandos acima não funcionar ou mostrar uma mensagem de erro, você precisará instalar o Node.js. Vá para o site oficial do <a href="https://nodejs.org/">Node.js</a> e baixe a versão LTS, que é mais estável. A instalação geralmente inclui o npm automaticamente.</li>
-<li>Após a instalação, feche e abra o terminal novamente e execute os comandos <code>node -v</code> e <code>npm -v</code> para confirmar que tudo está funcionando.</li>
-<li>
-<p><strong>Instalando o yarn:</strong> O yarn é outro gerenciador de pacotes. Ele oferece algumas vantagens em termos de velocidade e determinismo. Se você quiser usá-lo em vez do npm, pode instalá-lo com o seguinte comando no seu terminal (depois de ter o npm instalado):</p>
-<p><code>bash
-npm install -g yarn</code></p>
-</li>
-<li>
-<p>Para verificar a instalação do yarn, digite:</p>
-<p><code>bash
-yarn -v</code></p>
-</li>
-</ul>
-<h3><strong>Passo 2: Criar o projeto com yarn e Vite</strong></h3>
-<p>O Vite é uma ferramenta de construção extremamente rápida para aplicações web modernas. Ele configura automaticamente toda a estrutura básica do projeto com as dependências necessárias e oferece um tempo de inicialização do servidor instantâneo. O yarn será nosso gerenciador de pacotes.</p>
-<ul>
-<li>Para criar o projeto, execute o seguinte comando no terminal do VS Code:</li>
-</ul>
-<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>create<span class="w"> </span>vite
-</code></pre></div>
+<p>Dentro de <code>app</code>, criaremos a pasta <code>repositories</code> com o arquivo <code>ContactsRepository.js</code>. Assim como criamos um controller por entidade, criaremos um repositorie com entidade.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/repositories/ContactsRepository.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">uuid</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;uuidv4&quot;</span><span class="p">);</span>
 
-<p>Este comando vai baixar e instalar todas as dependências necessárias para o seu projeto e após finalizar, pedirá um nome para o projeto. Vamos chamar nosso primeiro projeto de <code>meu-primeiro-react</code>, mas você pode escolher o nome que quiser (sem espaços e em letras minúsculas é uma boa prática).</p>
-<p>Após escolher o nome, o programa pedirá para selecionar o framework. Aqui, selecionaremos “React”. A seguir, ele pedirá para selecionar a variante. Para projetos mais rápidos, é aconselhável escolher “TypeScript + SWC”.</p>
-<h3><strong>Passo 3: Entrando na pasta do projeto e instalando dependências</strong></h3>
-<p>Assim que o Vite terminar de criar o projeto, navegue até a pasta do seu novo aplicativo:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>meu-primeiro-react
-</code></pre></div>
+<span class="kd">const</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">uuid</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Amanda&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;amanda@email.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">phone</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123123123&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">category_id</span><span class="o">:</span><span class="w"> </span><span class="nx">uuid</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
 
-<p>Agora, precisamos instalar as dependências do projeto (como o próprio React e outras bibliotecas essenciais). Com o yarn, isso é feito com o seguinte comando:</p>
-<div class="highlight"><pre><span></span><code>yarn
-</code></pre></div>
-
-<p>O yarn vai ler o arquivo <code>package.json</code> (que o Vite já criou) e baixar todas as dependências listadas na pasta <code>node_modules</code>.</p>
-<h3><strong>Passo 4: Iniciando o servidor de desenvolvimento</strong></h3>
-<p>Com as dependências instaladas, podemos rodar o projeto:</p>
-<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>dev
-</code></pre></div>
-
-<p>Este comando irá iniciar um servidor de desenvolvimento local. Geralmente, ele indicará no seu terminal o endereço em que o seu aplicativo está rodando (algo como <code>http://localhost:5173/</code>). Abra esse endereço no seu navegador. Você deverá ver a página inicial padrão do React + Vite.</p>
-<h3><strong>Passo 5: Explorando a estrutura do projeto</strong></h3>
-<p>Vamos dar uma olhada na estrutura de arquivos e pastas que o Vite criou:</p>
-<div class="highlight"><pre><span></span><code>meu-primeiro-react/
-├── node_modules/         (Contém todas as bibliotecas e dependências do projeto)
-├── public/               (Contém a/rquivos estáticos como o favicon)
-│   └── vite.svg
-├── src/                  (Onde a maior parte do seu código React ficará)
-│   ├── App.tsx           (O componente raiz do seu aplicativo)
-│   ├── App.css           (Exemplo de CSS para o componente App)
-│   ├── index.css         (Estilos globais)
-│   ├── main.tsx          (O ponto de entrada do seu aplicativo React)
-│   └── assets/           (Para imagens e outros recursos)
-│       └── react.svg
-├── .gitignore            (Especifica arquivos que o Git deve ignorar)
-├── eslint.config.js      (Arquivo de configuração do ESLint)
-├── index.html            (A página HTML principal que o React injetará o seu aplicativo)
-├── package.json          (Arquivo de configuração do yarn, lista as dependências e scripts)
-├── README.md             (Arquivo com informações sobre o projeto)
-├── tsconfig.app.json     (Arquivo de configuração do TypeScript)
-├── tsconfig.node.json    (Arquivo de configuração do TypeScript)
-├── tsconfig.json         (Arquivo de configuração do TypeScript)
-├── vite.config.js        (Arquivo de configuração do Vite)
-└── yarn.lock             (Informações detalhadas sobre as versões das dependências)
-</code></pre></div>
-
-<h3><strong>Passo 6: Entendendo a conexão entre os arquivos</strong></h3>
-<p>Entender como os arquivos index.html, main.tsx e app.tsx se conectam é fundamental para compreender como funciona um projeto React.</p>
-<p><strong>1. <code>index.html</code></strong></p>
-<p>O arquivo <code>index.html</code> é o arquivo que o navegador carrega quando você acessa a sua aplicação React. O React injeta a interface aqui, dentro da <code>div</code> com <code>id="root"</code>. Observe a tag <code>&lt;script type="module" src="/src/main.tsx"&gt;&lt;/script&gt;</code>. Esta é a chave da conexão, chamando o arquivo React.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;icon&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;image/svg+xml&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/vite.svg&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Vite + React + TS<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;root&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/src/main.tsx&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-
-<p><strong>2. <code>main.tsx</code></strong></p>
-<p>É o ponto de entrada do React. Ele é o primeiro script que o navegador executa após o <code>index.html</code> ser carregado (devido à tag <code>&lt;script&gt;</code> no HTML).</p>
-<p>Ele faz 2 coisas principais:</p>
-<ul>
-<li>Importa a biblioteca React e o <code>App.tsx</code>, que é o seu componente principal</li>
-<li>Diz ao React para “injetar” o <code>App.tsx</code> dentro do <code>root</code> do HTML</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">StrictMode</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="s1">&#39;./index.css&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">App</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./App.tsx&#39;</span>
-
-<span class="n">createRoot</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span><span class="err">!</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
-<span class="w">  </span><span class="o">&lt;</span><span class="n">StrictMode</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">App</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">  </span><span class="o">&lt;/</span><span class="n">StrictMode</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
-
-<p><strong>3. <code>App.tsx</code></strong></p>
-<p>Contém o componente funcional ou de classe que serve como o contêiner principal da sua aplicação React.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">reactLogo</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./assets/react.svg&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">viteLogo</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;/vite.svg&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="s1">&#39;./App.css&#39;</span>
-
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">const</span><span class="w"> </span><span class="p">[</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://vite.dev&quot;</span><span class="w"> </span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">img</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="n">viteLogo</span><span class="p">}</span><span class="w"> </span><span class="n">className</span><span class="o">=</span><span class="s2">&quot;logo&quot;</span><span class="w"> </span><span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Vite logo&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://react.dev&quot;</span><span class="w"> </span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">img</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="n">reactLogo</span><span class="p">}</span><span class="w"> </span><span class="n">className</span><span class="o">=</span><span class="s2">&quot;logo react&quot;</span><span class="w"> </span><span class="n">alt</span><span class="o">=</span><span class="s2">&quot;React logo&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Vite</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">React</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">div</span><span class="w"> </span><span class="n">className</span><span class="o">=</span><span class="s2">&quot;card&quot;</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">button</span><span class="w"> </span><span class="n">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">setCount</span><span class="p">((</span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)}</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="n">count</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="p">{</span><span class="n">count</span><span class="p">}</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="n">Edit</span><span class="w"> </span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">src</span><span class="o">/</span><span class="n">App</span><span class="o">.</span><span class="n">tsx</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">save</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">HMR</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">p</span><span class="w"> </span><span class="n">className</span><span class="o">=</span><span class="s2">&quot;read-the-docs&quot;</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="n">Click</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Vite</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">React</span><span class="w"> </span><span class="n">logos</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">learn</span><span class="w"> </span><span class="n">more</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">)</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">();</span>
 </code></pre></div>
 
 <ul>
-<li><strong><code>function App()</code>:</strong> O JSX dentro do <code>return</code> descreve a estrutura visual inicial da sua aplicação. Ele pode incluir outros componentes, elementos HTML, texto, etc.</li>
-<li><strong><code>export default App</code>:</strong> Exporta o componente <code>App</code> como padrão, o que permite que ele seja importado facilmente no <code>main.tsx</code>.</li>
+<li><code>contacts</code> → simula um banco de dados</li>
+<li><code>findAll()</code> → retorna todos os contatos</li>
+<li>o controller não acessa o array diretamente</li>
 </ul>
-<p><strong>Resumindo:</strong></p>
+<p>No <code>ContactController.js</code>, precisamos importar o <code>ContactsRepository.js</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/controllers/ContactController.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../repositories/ContactsRepository&quot;</span><span class="p">);</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">index</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">contacts</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">show</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">store</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="ow">delete</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">();</span>
+</code></pre></div>
+
+<p><strong>Assincronismo</strong></p>
+<p>Atualmente, nosso mock é um Array na memória, então o acesso é instantâneo. Mas, quando conectarmos no Postgres, o acesso ao banco de dados demora alguns milissegundos. No JavaScript, tudo que demora (I/O) é <strong>Assíncrono</strong> (<code>Promise</code>).</p>
+<p><em>Síncrono</em> ou <em>assíncrono</em> diz respeito ao fluxo de execução de um programa. Quando uma operação executa <strong>completamente</strong> antes de passar o controle à seguinte, a execução é <em>síncrona</em>. Esse é o método padrão de execução de código.</p>
+<p>Quando uma ou mais operações são demoradas, pode ser interessante executá-las de maneira <em>assíncrona</em>, para que o restante do código possa ser executado sem precisar esperar que elas terminem.</p>
+<aside>
+
+I/O Assíncrono (Entrada/Saída Assíncrona ou Asynchronous Input/Output) é uma técnica de computação que permite que um programa inicie uma operação de leitura ou escrita (como ler um arquivo, fazer uma requisição de rede ou acessar um banco de dados) e continue executando outras tarefas sem esperar que essa operação termine.
+
+Diferente do I/O síncrono (bloqueante), onde o programa "congela" e aguarda a conclusão da tarefa, o I/O assíncrono (não bloqueante) libera a CPU para realizar trabalhos paralelos, retornando o resultado da operação apenas quando ela for finalizada.
+
+</aside>
+
+<p>O Assincronismo não bloqueante utiliza mecanismos como <code>async/await</code>, <code>Promises</code>, <code>futures</code> ou <em>callbacks</em> para tratar a resposta no futuro sem travar a thread.</p>
+<p>A consulta no banco de dados é uma operação assíncrona. Se deixarmos o código do jeito que está agora (síncrono), quando colocar o banco de dados, o código vai quebrar. Por isso, usaremos <code>async/await</code> desde agora.</p>
+<p><strong>1. Ajustando o Repository (<code>ContactsRepository.js</code>)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/repositories/ContactsRepository.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">uuid</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;uuidv4&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">uuid</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Amanda&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;amanda@email.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">phone</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123123123&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">category_id</span><span class="o">:</span><span class="w"> </span><span class="nx">uuid</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">contacts</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">();</span>
+</code></pre></div>
+
+<p>Mesmo retornando um array simples instantaneamente, vamos retornar uma Promise. Isso cria um "contrato" de que essa operação pode demorar. Dessa forma, definimos que qualquer chamada a findAll() deve ser tratada como algo assíncrono.</p>
+<p><strong>2. Ajustando o Controller (<code>ContactController.js</code>)</strong></p>
+<p>Agora o controller precisa saber esperar (<code>await</code>) a Promise resolver antes de continuar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/controllers/ContactController.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../repositories/ContactsRepository&quot;</span><span class="p">);</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">index</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">contacts</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">show</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// obter um registro específico (GET /contacts/:id)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">store</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// criar um novo registro (POST /contacts)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// atualizar (editar) um registro (PUT /contacts/:id)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="ow">delete</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// deletar um registro (DELETE /contacts/:id)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">();</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th><strong>Promise</strong></th>
+<th>Um valor que virá no futuro (caixa)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>async</strong></td>
+<td>Marca uma função como assíncrona (permite usar a caixa)</td>
+</tr>
+<tr>
+<td><strong>await</strong></td>
+<td>Espera a Promise resolver (abre a caixa quando ela estiver pronta)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Próximo passo: Criando as rotas de show e delete</strong></p>
+<p>O método <code>show</code> é responsável por buscar <strong>um único registro</strong> baseado no ID passado na URL.</p>
+<p><strong>1. Rota (<code>routes.js</code>)</strong></p>
+<p>Primeiro, precisamos ensinar o Express a receber um parâmetro dinâmico na URL (o <code>:id</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/routes.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Router</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./app/controllers/ContactController&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/contacts&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/contacts/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">show</span><span class="p">);</span><span class="w"> </span><span class="c1">// nova rota com método GET para buscar um contato pelo ID</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
+</code></pre></div>
+
+<p><strong>2. O Controller (<code>ContactController.js</code>)</strong></p>
+<p>O Controller vai pegar o ID da URL (<code>request.params</code>), pedir para o Repository buscar e tratar o erro caso o contato não exista (retornando status 404).</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/controllers/ContactController.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../repositories/ContactsRepository&quot;</span><span class="p">);</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">index</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">contacts</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">show</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span><span class="w"> </span><span class="c1">// desestrutura (extrai) o ID da URL</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Contato não encontrado&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// se não encontrou, retorna um erro e encerra a requisição</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">contact</span><span class="p">);</span><span class="w"> </span><span class="c1">// se encontrou, retorna o contato</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">store</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="nx">update</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="ow">delete</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">();</span>
+</code></pre></div>
+
+<p><strong>3. O Repository (<code>ContactsRepository.js</code>)</strong></p>
+<p>Precisamos criar o método <code>findById(id)</code>, que vai vasculhar nosso <em>mock</em> e encontrar o contato com o ID específico. Ele também retornará uma <code>Promise</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/repositories/ContactsRepository.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">v4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;uuid&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">v4</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Amanda&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;amanda@email.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">phone</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123123123&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">category_id</span><span class="o">:</span><span class="w"> </span><span class="nx">v4</span><span class="p">()</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">v4</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ranilo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ranilo@email.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">phone</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123123123&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">category_id</span><span class="o">:</span><span class="w"> </span><span class="nx">v4</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">contacts</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">();</span>
+</code></pre></div>
+
+<p><strong>Como testar (navegador ou thunder client):</strong></p>
 <ol>
-<li>O navegador carrega o <code>index.html</code></li>
-<li>O navegador inicia a execução do <code>main.tsx</code></li>
-<li>O <code>main.tsx</code> importa a biblioteca React e o componente <code>App</code> do <code>App.tsx</code>, renderizando o componente <code>&lt;App /&gt;</code> dentro do elemento <code>div</code> que existe no <code>index.html</code></li>
-<li>O componente <code>App</code> e seus filhos (outros componentes que ele pode renderizar) então controlam e atualizam a interface do usuário dentro do navegador</li>
+<li>Rode a aplicação (<code>yarn dev</code>).</li>
+<li>Acesse <code>http://localhost:3000/contacts</code> no navegador para ver a lista e <strong>copie o ID</strong> que foi gerado pelo <code>uuid()</code>.</li>
+<li>Acesse <code>http://localhost:3000/contacts/COLE_O_ID_AQUI</code> para ver o método <code>show</code> funcionando.</li>
+<li>Tente acessar <code>http://localhost:3000/contacts/123</code> para ver a mensagem de erro.</li>
 </ol>
-<p>Essa é a cadeia de conexão para iniciar uma aplicação React com Vite e TypeScript. o <code>App.tsx</code> define o componente raiz da sua aplicação React, que é a base de toda a interface do usuário que será renderizada no navegador dentro do elemento <code>root</code> do <code>index.html</code> através da instrução no <code>main.tsx</code>.</p>
-<p>Para entender facilmente, imagine que sua aplicação React é como um teatro:</p>
-<ul>
-<li><code>index.html</code> é o teatro vazio com um palco montado. A <code>&lt;div id="root"&gt;</code> é esse palco esperando a apresentação.</li>
-<li><code>main.tsx</code> é o diretor da peça. Ele diz: “Vamos começar! A peça principal é o App. Entrem em cena no palco!”</li>
-<li><code>App.tsx</code> é a peça que será encenada. Com todos os atores (componentes), cenário (HTML/JSX, CSS) e ações (interatividade com React).</li>
-</ul>
-<h3><strong>Passo 7: Entendendo componentes e modificando o <code>App.tsx</code></strong></h3>
-<ul>
-<li><strong>O que é um componente?</strong></li>
-</ul>
-<p>Pense em um componente como uma peça de Lego. Cada peça pode ser usada várias vezes e pode conter seus próprios estilos, comportamentos e conteúdo.</p>
-<ul>
-<li><strong>Modificando o <code>App.tsx</code></strong></li>
-</ul>
-<p>Inicialmente, o <code>App.tsx</code> criado pelo Vite vem com uma demonstração básica do React + Vite. Vamos começar simplificando o <code>App.tsx</code> original, removendo o código padrão do Vite. Substitua o conteúdo atual por algo mais limpo, assim:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">reactLogo</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./assets/react.svg&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">viteLogo</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;/vite.svg&#39;</span>
-<span class="kn">import</span><span class="w"> </span><span class="s1">&#39;./App.css&#39;</span>
+<aside>
 
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">const</span><span class="w"> </span><span class="p">[</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+**Nota**
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Hello</span><span class="w"> </span><span class="n">world</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">)</span>
+Quando colocamos a palavra `async` na frente de uma função, o JavaScript **automaticamente embrulha o seu retorno dentro de uma Promise resolvida**. Como já declaramos o método como `async`, **não precisamos criar manualmente uma Promise.** Uma função `async` já retorna automaticamente uma Promise.
+
+
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/repositories/ContactsRepository.js</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</aside>
+
+<p><strong>Criando a rota delete</strong></p>
+<p>O método <code>delete</code> é responsável por deletar <strong>um único registro</strong> baseado no ID passado na URL.</p>
+<p><strong>1. Rota (<code>routes.js</code>)</strong></p>
+<p>Primeiramente, ensinamos o roteador a ouvir o verbo HTTP correto (<code>DELETE</code>) no mesmo endereço.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/routes.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Router</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./app/controllers/ContactController&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/contacts&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/contacts/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">show</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;/contacts/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="ow">delete</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
+</code></pre></div>
+
+<p><strong>2. O Controller (<code>ContactController.js</code>)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/controllers/ContactController.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../repositories/ContactsRepository&quot;</span><span class="p">);</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">(...)</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="ow">delete</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Contato não encontrado&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mf">204</span><span class="p">);</span><span class="w"> </span><span class="c1">// retorna status 204 (No Content: deu certo e não tem body na resposta)</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">();</span>
 </code></pre></div>
 
-<p>Depois de salvar, você verá o conteúdo aparecendo na tela.</p>
-<p>Agora, podemos apagar do <code>App.tsx</code> o que não está sendo utilizado. Tudo o que não está sendo utilizado ficará com visual apagado devido ao ESLint. O código ficará assim:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>
+<p><strong>3. O Repository (<code>ContactsRepository.js</code>)</strong></p>
+<p>Obs.: No <code>ContactsRepository.js</code>, a lista de contatos está declarada como <code>const contacts = [...]</code>. O problema é que, para deletar um contato de um Array, a forma mais comum é usar o <code>.filter()</code> para criar uma nova lista sem aquele ID. Mas <strong>não podemos reatribuir</strong> um novo Array a uma variável <code>const</code>. Então, no nosso <em>mock</em> mudaremos de <code>const contacts</code> para <code>let contacts</code>.</p>
+<p>Agora, vamos adicionar o método <code>delete(id)</code> usando o <code>.filter()</code>. Ele vai varrer a lista e manter apenas os contatos que têm o ID <strong>diferente</strong> do ID que queremos apagar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/repositories/ContactsRepository.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">v4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;uuid&quot;</span><span class="p">);</span>
 
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Hello</span><span class="w"> </span><span class="n">world</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...)</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="ow">delete</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">();</span>
 </code></pre></div>
 
+<p><strong>Como testar:</strong></p>
+<p>O navegador comum só faz requisições do tipo <code>GET</code>. Para testar o <code>DELETE</code>, você vai precisar do Thunder Client:</p>
+<ol>
+<li>Faça um <code>GET /contacts</code> e copie um ID.</li>
+<li>Mude o verbo HTTP na ferramenta para <strong>DELETE</strong>.</li>
+<li>Acesse <code>/contacts/COLE_O_ID_AQUI</code> e clique em Send. Você deve receber um status <strong>204 No Content</strong>.</li>
+<li>Faça um <code>GET /contacts</code> novamente e comprove que o contato sumiu da lista.</li>
+</ol>
+<p><strong>O que são middlewares?</strong></p>
+<p>O próximo passo é dar vida ao método <code>store</code> no Controller, que será responsável por tratar a rota <code>POST /contacts</code>, recebendo os dados enviados pelo cliente para criar um novo contato no nosso <em>mock</em>.</p>
+<p>Para que isso funcione, precisamos acessar as informações enviadas no corpo da requisição (<code>request.body</code>). Porém, por padrão, o Express <strong>não interpreta automaticamente o corpo das requisições no formato JSON</strong>. Isso significa que, se tentarmos fazer um <code>console.log(request.body)</code> nesse momento, o resultado será <code>undefined</code>.</p>
+<p>Ou seja, antes de conseguirmos criar ou editar contatos, precisamos ensinar o Express a entender os dados que estão sendo enviados pelo cliente. Para isso, utilizaremos um <strong>middleware</strong>, que irá interceptar a requisição e converter o JSON recebido em um objeto JavaScript acessível dentro do Controller.</p>
+<p>Por meio de middlewares é possível manipular os objetos <code>request</code> e <code>response</code>, controlar o fluxo entre as rotas, além de aplicar recursos como autenticação, validações e logs.</p>
+<p>Nesse momento, utilizaremos middleware para fazer gerenciamento de requisições, controlando rotas antes de chegarem ao controller. Podemos pensar nos Middlewares como uma interceptação pelo qual todas as requisições passam antes de chegar na sua rota. Dentro de um middleware podemos dizer se a request deve continuar (ir para o controller) ou se ela deve parar.</p>
+<aside>
+
+**Entendendo o ciclo de vida de uma requisição**
+
+Sempre que uma request chega, precisamos resolver essa requisição e após isso dar uma resposta:
+
+request → controller → response
+
+Os middlewares mudam um pouco esse comportamento. Quando há um middleware, antes de a request chegar no controller, ela é interceptada pelo middleware:
+
+request → midldlewares → controller → response
+
+</aside>
+
+<p>Tecnicamente, um middleware no Express é apenas uma função que tem acesso a três coisas:</p>
 <ul>
-<li>Também podemos apagar todos os arquivos .css e suas importações. Para começar com uma estilização do zero, apagamos todos os arquivos <code>.css</code> (<code>App.css</code> e <code>index.css</code>) dentro da pasta <code>src</code>. Também removemos as linhas de importação desses arquivos tanto em <code>App.tsx</code> (<code>import "./App.css";</code>) quanto em <code>main.tsx</code> (<code>import './index.css';</code>).</li>
-<li><strong>Limpeza das Pastas <code>assets</code> e <code>public</code>:</strong> Removemos o conteúdo dentro das pastas <code>assets</code> (onde estavam as logos) e <code>public</code> (onde estava o <code>vite.svg</code> do favicon).</li>
-<li><strong>Remoção da Referência ao Favicon no <code>index.html</code>:</strong> Já que removemos o <code>vite.svg</code>, apagamos a linha que o referenciava no <code>&lt;head&gt;</code> do <code>index.html</code>:</li>
+<li><code>request</code> (os dados que chegaram)</li>
+<li><code>response</code> (os métodos para devolver a resposta)</li>
+<li><strong><code>next</code></strong> (função que manda continuar)</li>
 </ul>
-<p>Agora, os erros param de acontecer e temos um projeto em branco com “Hello world”.</p>
-<p>Para o nosso primeiro projeto, vamos criar um site com uma Navbar, uma Section e um Footer. Para isso, no nosso <code>App.tsx</code>, podemos escrever o seguinte:</p>
-<div class="highlight"><pre><span></span><code>function<span class="w"> </span>App()<span class="w"> </span>{
-<span class="w">  </span>return<span class="w"> </span>(
-<span class="w">    </span><span class="err">&lt;</span>&gt;
-<span class="w">      </span><span class="nt">&lt;nav&gt;</span>
-<span class="w">        </span><span class="nt">&lt;div&gt;</span>
-<span class="w">          </span><span class="nt">&lt;h1&gt;</span>Barra<span class="w"> </span>de<span class="w"> </span>navegação<span class="nt">&lt;/h1&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/nav&gt;</span>
+<p>Todo middleware tem esse formato:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">middleware</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// faz alguma coisa</span>
 
-<span class="w">      </span><span class="nt">&lt;section&gt;</span>
-<span class="w">        </span><span class="nt">&lt;div&gt;</span>
-<span class="w">          </span><span class="nt">&lt;h1&gt;</span>Seção<span class="w"> </span>1<span class="nt">&lt;/h1&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">        </span><span class="nt">&lt;div&gt;</span>
-<span class="w">          </span><span class="nt">&lt;h2&gt;</span>Seção<span class="w"> </span>2<span class="nt">&lt;/h2&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/section&gt;</span>
-
-<span class="w">      </span><span class="nt">&lt;footer&gt;</span>
-<span class="w">        </span><span class="nt">&lt;h1&gt;</span>Footer<span class="nt">&lt;/h1&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/footer&gt;</span>
-<span class="w">    </span><span class="err">&lt;</span>/&gt;
-<span class="w">  </span>);
-}
-
-export<span class="w"> </span>default<span class="w"> </span>App;
+<span class="w">    </span><span class="nx">next</span><span class="p">();</span><span class="w"> </span><span class="c1">// libera para continuar</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Isso funciona para criarmos o projeto, porém poderíamos fazer a mesma coisa com HTML. Queremos ter outras páginas além da página inicial, e seria trabalhoso copiar e colar vários blocos de código em arquivos diferentes. Aqui entra o poder do React. Com ele, podemos componentizar o código para reaproveitá-lo.</p>
-<h3><strong>Passo 8: Criando um novo componente</strong></h3>
-<p>Primeiro, criaremos uma pasta “components” dentro da pasta “src”. Agora, criaremos o nosso primeiro componente, o arquivo <code>Navbar.tsx</code> (note a primeira letra maiúscula, uma convenção para nomes de componentes React). Ele retornará o nosso Navbar:</p>
-<div class="highlight"><pre><span></span><code>export<span class="w"> </span>function<span class="w"> </span>Navbar()<span class="w"> </span>{
-<span class="w">  </span>return<span class="w"> </span>(
-<span class="w">    </span><span class="nt">&lt;nav&gt;</span>
-<span class="w">      </span><span class="nt">&lt;div&gt;</span>
-<span class="w">        </span><span class="nt">&lt;h1&gt;</span>Barra<span class="w"> </span>de<span class="w"> </span>navegação<span class="nt">&lt;/h1&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/nav&gt;</span>
-<span class="w">  </span>);
-}
-</code></pre></div>
-
+<p>Dentro de um middleware, temos apenas <strong>duas escolhas</strong>:</p>
 <ul>
-<li><strong><code>export function Navbar() { ... }</code></strong>: Definimos e exportamos um componente funcional chamado <code>Navbar</code>.</li>
-<li><strong><code>return (...)</code></strong>: Retornamos o JSX que representa a estrutura da nossa barra de navegação.</li>
+<li><strong>encerrar a requisição:</strong> enviando um <code>response.send()</code> ou <code>response.json()</code> (ex: um middleware de segurança que barra um usuário sem senha).</li>
+<li><strong>passar para frente:</strong> chamando a função <code>next()</code>.</li>
 </ul>
-<p>Nota: um componente React deve retornar um único nó pai. Se escrevermos o seguinte:</p>
-<div class="highlight"><pre><span></span><code>export<span class="w"> </span>function<span class="w"> </span>Navbar()<span class="w"> </span>{
-<span class="w">  </span>return<span class="w"> </span>(
-<span class="w">    </span><span class="nt">&lt;nav&gt;</span>
-<span class="w">      </span><span class="nt">&lt;div&gt;</span>
-<span class="w">        </span><span class="nt">&lt;h1&gt;</span>Barra<span class="w"> </span>de<span class="w"> </span>navegação<span class="nt">&lt;/h1&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/nav&gt;</span>
-<span class="w">    </span><span class="nt">&lt;div&gt;</span>
-<span class="w">        </span><span class="nt">&lt;h1&gt;</span>Hello<span class="w"> </span>World<span class="nt">&lt;/h1&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">  </span>);
-}
+<p>No nosso caso, por padrão, quando um cliente envia um pacote de dados (como os dados de um novo contato), os dados são incompreensíveis para o JavaScript. Quando usamos o <code>app.use(express.json())</code>, estamos colocando um interceptador no início do processo. Para utilizar esse middleware, temos que ir no arquivo principal (<code>index.js</code>) e adicionar esta linha:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/index.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./routes&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span><span class="w"> </span><span class="c1">// middleware global que transforma o body da requisição em json</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">routes</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Server rodando na porta 3000, http://localhost:3000&quot;</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre></div>
 
-<p>o código quebrará. Portanto, se quisermos retornar mais de um elemento, usamos o fragment (<code>&lt;&gt;</code> e <code>&lt;/&gt;</code>) para englobar todo o bloco:</p>
-<div class="highlight"><pre><span></span><code>export<span class="w"> </span>function<span class="w"> </span>Navbar()<span class="w"> </span>{
-<span class="w">  </span>return<span class="w"> </span>(
-<span class="w">    </span><span class="err">&lt;</span>&gt;
-<span class="w">      </span><span class="nt">&lt;nav&gt;</span>
-<span class="w">        </span><span class="nt">&lt;div&gt;</span>
-<span class="w">          </span><span class="nt">&lt;h1&gt;</span>Barra<span class="w"> </span>de<span class="w"> </span>navegação<span class="nt">&lt;/h1&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/nav&gt;</span>
-<span class="w">      </span><span class="nt">&lt;div&gt;</span>
-<span class="w">        </span><span class="nt">&lt;h1&gt;</span>Hello<span class="w"> </span>World<span class="nt">&lt;/h1&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">    </span><span class="err">&lt;</span>/&gt;
-<span class="w">  </span>);
-}
+<p><strong>Atenção:</strong> Ela deve vir <em>antes</em> de <code>app.use(routes)</code>, pois a requisição precisa ser transformada em JSON antes de chegar no Controller.</p>
+<p><strong>Criando a rota de cadastro</strong></p>
+<p>O método <code>store</code> é responsável por criar um novo contato a partir dos dados enviados no corpo da requisição (<code>request.body</code>).</p>
+<p><strong>1. Rota (<code>routes.js</code>)</strong></p>
+<p>Primeiramente, adicionamos uma nova rota utilizando o verbo HTTP <code>POST</code>, que é o verbo padrão para criação de recursos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/routes.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Router</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./app/controllers/ContactController&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/contacts&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/contacts/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">show</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;/contacts/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="ow">delete</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/contacts&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">store</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
 </code></pre></div>
 
-<p>Agora, com o componente criado, podemos importá-lo e chamá-lo no <code>App.tsx</code>. Ele se tornou uma “peça” que podemos colocar em qualquer página do nosso projeto.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Navbar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Navbar&quot;</span><span class="p">;</span>
+<p><strong>2. O Controller (<code>ContactController.js</code>)</strong></p>
+<p>Aqui nós pegamos o corpo da requisição (<code>request.body</code>) e aplicamos as nossas <strong>regras de negócio</strong>.</p>
+<p>Definimos duas regras principais:</p>
+<ol>
+<li>O campo <code>name</code> é obrigatório (Validação).</li>
+<li>O <code>email</code> não pode se repetir (Regra de negócio).</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/controllers/ContactController.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../repositories/ContactsRepository&quot;</span><span class="p">);</span>
 
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Navbar</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(...)</span>
 
-<span class="w">      </span><span class="o">&lt;</span><span class="n">section</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Seção</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Seção</span><span class="w"> </span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">section</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">store</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"> </span><span class="c1">// desestrutura (extrai) os dados do corpo da requisição</span>
 
-<span class="w">      </span><span class="o">&lt;</span><span class="n">footer</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Footer</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">footer</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Validação</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;O nome é obrigatório&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// retorna status 400 (Bad Request: deu erro e nao tem body na resposta)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Regra de negócio: O e-mail já existe?</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contactExists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">findByEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span><span class="w"> </span><span class="c1">// busca um contato pelo e-mail</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">contactExists</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Esse e-mail já está cadastrado&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// retorna status 400 (Bad Request: deu erro e nao tem body na resposta)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span><span class="w"> </span><span class="c1">// se passou pela validação, chama o método create do ContactsRepository e passa os dados</span>
+
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">contact</span><span class="p">);</span><span class="w"> </span><span class="c1">// retorna o contato criado</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
 <span class="p">}</span>
 
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">();</span>
 </code></pre></div>
 
-<h3><strong>Passo 9: Criando outros componentes</strong></h3>
-<p>Agora, criaremos o componente Section. Para isso, realizaremos o mesmo procedimento do passo anterior. Criaremos o arquivo “Section.tsx” dentro da pasta “components” com o seguinte código:</p>
-<div class="highlight"><pre><span></span><code>export<span class="w"> </span>function<span class="w"> </span>Section()<span class="w"> </span>{
-<span class="w">  </span>return<span class="w"> </span>(
-<span class="w">    </span><span class="err">&lt;</span>&gt;
-<span class="w">      </span><span class="nt">&lt;section&gt;</span>
-<span class="w">        </span><span class="nt">&lt;div&gt;</span>
-<span class="w">          </span><span class="nt">&lt;h1&gt;</span>Seção<span class="w"> </span>1<span class="nt">&lt;/h1&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">        </span><span class="nt">&lt;div&gt;</span>
-<span class="w">          </span><span class="nt">&lt;h2&gt;</span>Seção<span class="w"> </span>2<span class="nt">&lt;/h2&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/div&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/section&gt;</span>
-<span class="w">    </span><span class="err">&lt;</span>/&gt;
-<span class="w">  </span>);
-}
-</code></pre></div>
+<p><strong>3. O Repository (<code>ContactsRepository.js</code>)</strong></p>
+<p>Nosso Controller chamou dois métodos novos: <code>findByEmail</code> e <code>create</code>. Precisamos criá-los no Repository para interagir com o nosso <em>mock</em>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/repositories/ContactsRepository.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">v4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;uuid&quot;</span><span class="p">);</span>
 
-<p>Importamos e chamamos ele no App.tsx:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Navbar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Navbar&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Section</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Section&quot;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...)</span>
 
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Navbar</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Section</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">      </span><span class="o">&lt;</span><span class="n">footer</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Footer</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">footer</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findByEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">email</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">email</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// busca um contato pelo e-mail</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">newContact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">v4</span><span class="p">(),</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">newContact</span><span class="p">);</span><span class="w"> </span><span class="c1">// salva no &quot;banco de dados&quot; (mock)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">newContact</span><span class="p">;</span><span class="w"> </span><span class="c1">// retorna o objeto criado para o Controller</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="ow">delete</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">();</span>
 </code></pre></div>
 
-<p>Para criar o último componente, criamos o arquivo “Footer.tsx” dentro da pasta “components” com o seguinte código:</p>
-<div class="highlight"><pre><span></span><code>export<span class="w"> </span>function<span class="w"> </span>Footer()<span class="w"> </span>{
-<span class="w">  </span>return<span class="w"> </span>(
-<span class="w">    </span><span class="err">&lt;</span>&gt;
-<span class="w">      </span><span class="nt">&lt;footer&gt;</span>
-<span class="w">        </span><span class="nt">&lt;h1&gt;</span>Footer<span class="nt">&lt;/h1&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/footer&gt;</span>
-<span class="w">    </span><span class="err">&lt;</span>/&gt;
-<span class="w">  </span>);
-}
-</code></pre></div>
-
-<p>A seguir, podemos importá-lo e chamá-lo no <code>App.tsx</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Navbar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Navbar&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Section</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Section&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Footer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Footer&quot;</span><span class="p">;</span>
-
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Navbar</span><span class="w"> </span><span class="o">/&gt;</span>
-
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Section</span><span class="w"> </span><span class="o">/&gt;</span>
-
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Footer</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Agora, nosso <code>App.tsx</code> está muito mais limpo, modular e conciso. Em vez de ter toda a estrutura da página (navbar, seção, footer) diretamente dentro dele, estamos importando e usando componentes reutilizáveis. Isso demonstra o poder da componentização no React:</p>
+<p><strong>Como testar (Thunder Client):</strong></p>
 <ul>
-<li><strong>Organização:</strong> Código separado em arquivos lógicos.</li>
-<li><strong>Reutilização:</strong> Os componentes <code>Navbar</code>, <code>Section</code> e <code>Footer</code> podem ser usados em outras partes da nossa aplicação, se necessário.</li>
-<li><strong>Manutenção:</strong> Alterações em um componente afetam apenas aquele componente, tornando a manutenção mais fácil.</li>
-<li><strong>Legibilidade:</strong> O <code>App.tsx</code> agora descreve a estrutura da página de forma mais clara, apenas listando os componentes que a compõem.</li>
+<li>Método: <strong>POST</strong></li>
+<li>URL: <code>http://localhost:3000/contacts</code></li>
+<li>Vá na aba <strong>Body</strong> e selecione a opção <strong>JSON</strong>.</li>
+<li>Cole o objeto JSON com os dados e clique em <strong>Send</strong>.</li>
 </ul>
-<h3><strong>Passo 10: Adicionando navegação</strong></h3>
-<p>A navegação é essencial para qualquer aplicação web com múltiplas páginas. Vamos adicionar navegação usando o React Router DOM, que é a biblioteca mais usada para lidar com rotas.</p>
-<p><strong>Instalar o React Router DOM</strong></p>
-<p>Primeiro, precisamos adicionar a biblioteca ao nosso projeto. Abra o terminal dentro da pasta do projeto e execute o seguinte comando:</p>
-<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>add<span class="w"> </span>react-router-dom
-</code></pre></div>
-
-<p>Este comando irá baixar e instalar o <code>react-router-dom</code> como uma dependência do seu projeto.</p>
-<p><strong>Configurando as rotas no <code>App.tsx</code></strong></p>
-<p>Agora, vamos modificar o <code>App.tsx</code> para configurar as rotas. Precisamos importar alguns componentes do <code>react-router-dom</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BrowserRouter</span><span class="p">,</span><span class="w"> </span><span class="n">Routes</span><span class="p">,</span><span class="w"> </span><span class="n">Route</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;react-router-dom&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Footer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Footer&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Navbar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Navbar&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Section</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Section&quot;</span><span class="p">;</span>
-
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Navbar</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Section</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Footer</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Menelau&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;menelau@email.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;999999999&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;categoria&quot;</span>
 <span class="p">}</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
-</code></pre></div>
-
-<p><strong>Componentes importados:</strong></p>
-<ul>
-<li><code>BrowserRouter</code>: Um componente que envolve todo o conteúdo que precisa ter acesso ao roteamento. É como o controlador da navegação do seu site. Ele permite que você use rotas com URLs (como <code>/</code>, <code>/sobre</code>, <code>/contato</code>).</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;BrowserRouter&gt;</span>
-<span class="w">    </span>{/*<span class="w"> </span>Aqui<span class="w"> </span>dentro<span class="w"> </span>ficam<span class="w"> </span>as<span class="w"> </span>rotas<span class="w"> </span>da<span class="w"> </span>sua<span class="w"> </span>aplicação<span class="w"> </span>*/}
-<span class="nt">&lt;/BrowserRouter&gt;</span>
 </code></pre></div>
 
 <ul>
-<li><code>Routes</code>: Um componente que atua como um container para definir suas rotas. Ele renderiza o primeiro <code>&lt;Route&gt;</code> que corresponder à URL atual. Pense nele como uma lista de caminhos possíveis dentro do site.</li>
+<li>Para verificar o contato criado, mude o método para GET (ainda em /contacts) e clique em Send.</li>
+<li>Ao tentar cadastrar novamente o mesmo contato, deve aparecer a seguinte resposta:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;BrowserRouter&gt;</span>
-<span class="w">  </span><span class="nt">&lt;Routes&gt;</span>
-<span class="w">      </span>{/*<span class="w"> </span>Cada<span class="w"> </span>Route<span class="w"> </span>define<span class="w"> </span>uma<span class="w"> </span>página<span class="w"> </span>diferente<span class="w"> </span>*/}
-<span class="w">  </span><span class="nt">&lt;/Routes&gt;</span>
-<span class="nt">&lt;/BrowserRouter&gt;</span>;
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Esse e-mail já está cadastrado&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Criando a rota de edição</strong></p>
+<p>O método <code>update</code> é responsável por atualizar um contato existente com base no ID informado na URL. Para isso, utilizamos o verbo HTTP <code>PUT</code>, que representa a substituição completa de um recurso.</p>
+<ul>
+<li><code>PUT</code> = substituição completa do recurso</li>
+<li><code>PATCH</code> = atualização parcial</li>
+</ul>
+<p><strong>1. Rota (<code>routes.js</code>)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/routes.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Router</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./app/controllers/ContactController&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/contacts&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/contacts/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">show</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;/contacts/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="ow">delete</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/contacts&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">store</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">&quot;/contacts/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">.</span><span class="nx">update</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
+</code></pre></div>
+
+<p><strong>2. O Controller (<code>ContactController.js</code>)</strong></p>
+<p>No Controller, precisamos ter muito cuidado com a regra de negócio do e-mail. Quando atualizamos um contato, três cenários podem acontecer com o e-mail:</p>
+<ol>
+<li>O usuário mudou para um e-mail que não existe no sistema (Permitido).</li>
+<li>O usuário não alterou o e-mail, ou seja, enviou o próprio e-mail atual (Permitido).</li>
+<li>O usuário tentou mudar para um e-mail que <strong>já pertence a outro contato</strong> (Bloqueado).</li>
+</ol>
+<p>Para garantir essa lógica, buscamos se o e-mail já existe no banco (<code>findByEmail</code>). Se ele existir, verificamos se o dono desse e-mail tem um ID diferente do contato que estamos editando (<code>contactByEmail.id !== id</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/controllers/ContactController.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../repositories/ContactsRepository&quot;</span><span class="p">);</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">(...)</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">update</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span><span class="w"> </span><span class="c1">// pega o id da rota URL</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"> </span><span class="c1">// pega os dados do corpo da requisição</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contactExists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span><span class="w"> </span><span class="c1">// busca o contato pelo id</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">contactExists</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Contato não encontrado&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="c1">// se o contato não existir, retorna um erro</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;O nome é obrigatório&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="c1">// se o contato existir, mas o nome estiver vazio, retorna um erro</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contactByEmail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">findByEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span><span class="w"> </span><span class="c1">// busca o contato pelo e-mail</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">contactByEmail</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">contactByEmail</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Esse e-mail já está cadastrado&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="c1">// se o contato existir, mas o e-mail já estiver cadastrado e for diferente do contato atual, retorna um erro</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">contact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span><span class="w"> </span><span class="c1">// atualiza o contato</span>
+
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">contact</span><span class="p">);</span><span class="w"> </span><span class="c1">// retorna o contato atualizado</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">(...)</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactController</span><span class="p">();</span>
+</code></pre></div>
+
+<p><strong>3. O Repository (<code>ContactsRepository.js</code>)</strong></p>
+<p>No Repository, recebemos o <code>id</code> e os novos dados. Como estamos usando um array na memória (<code>mock</code>), a forma mais eficiente de atualizar um único item é utilizando a função <code>.map()</code>. Ela percorre todos os contatos; se o ID do contato atual for igual ao ID que queremos editar, substituímos pelo objeto novo. Caso contrário, mantemos o contato intacto.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mycontacts/src/app/repositories/ContactsRepository.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">v4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;uuid&quot;</span><span class="p">);</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...)</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findByEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">email</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">email</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">newContact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">v4</span><span class="p">(),</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">newContact</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">newContact</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">update</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">updatedContact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">,</span><span class="w"> </span><span class="nx">category_id</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// cria um objeto com os dados atualizados</span>
+<span class="w">        </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">updatedContact</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">contact</span><span class="p">);</span><span class="w"> </span><span class="c1">// substitui o contato atualizado no array</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">updatedContact</span><span class="p">;</span><span class="w"> </span><span class="c1">// retorna o objeto atualizado</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="ow">delete</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contacts</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ContactsRepository</span><span class="p">();</span>
+</code></pre></div>
+
+<p><strong>Como testar (Thunder Client):</strong></p>
+<ul>
+<li>Método: <strong>PUT</strong></li>
+<li>URL: <code>http://localhost:3000/contacts/[colar id de contato existente]</code></li>
+<li>Body (JSON):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Menelau Novo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;menelau.novo@email.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;000000000&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;categoria&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <ul>
-<li><code>Route</code>: Define uma rota específica. Ele recebe duas propriedades principais:<ul>
-<li><code>path</code>: O padrão da URL que esta rota corresponde (por exemplo: <code>/</code>, <code>/sobre</code>, <code>/contato</code>).</li>
-<li><code>element</code>: O componente que deve ser renderizado quando esse endereço for acessado.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Exemplo:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BrowserRouter</span><span class="p">,</span><span class="w"> </span><span class="n">Routes</span><span class="p">,</span><span class="w"> </span><span class="n">Route</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;react-router-dom&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Footer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Footer&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Navbar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Navbar&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Section</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Section&quot;</span><span class="p">;</span>
-
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/login&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Footer</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
-</code></pre></div>
-
-<p>A rota que criamos tem um caminho que se chama <code>/login</code>. Agora, se acessarmos <code>/login</code> (http://localhost:5173/login), apenas o componente <code>&lt;Footer /&gt;</code> será mostrado na tela.</p>
-<p>Vamos continuar com a nossa analogia da peça de teatro para entender como o roteamento funciona:</p>
-<ul>
-<li>As cenas da peça são as páginas do site.</li>
-<li><code>&lt;BrowserRouter&gt;</code> é como o diretor da peça. É ele que controla tudo o que vai aparecer no palco (navegador).</li>
-<li><code>&lt;Routes&gt;</code> lista todas as cenas (páginas) podem entrar em cena.</li>
-<li>Cada <code>&lt;Route&gt;</code> é uma cena diferente da peça.</li>
-</ul>
-<blockquote>
-<p>💡 <br>
-   Quando usamos React Router, ele muda apenas o que precisa na tela, sem recarregar o site inteiro. Você muda o ambiente (conteúdo), mas tecnicamente continua dentro da mesma estrutura, sem sair ou recarregar tudo. Isso deixa a navegação muito mais rápida e fluida. É devido a isso que dizemos que o React é usado para criar aplicações web de página única (<strong>SPAs - Single Page Applications</strong>). </p>
-<p>SPA é um tipo de aplicação web que carrega uma única página HTML e atualiza o conteúdo dinamicamente, sem recarregar a página inteira toda vez que o usuário navega.</p>
-</blockquote>
-<p>Continuando, podemos criar várias rotas:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BrowserRouter</span><span class="p">,</span><span class="w"> </span><span class="n">Routes</span><span class="p">,</span><span class="w"> </span><span class="n">Route</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;react-router-dom&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Footer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Footer&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Navbar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Navbar&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Section</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Section&quot;</span><span class="p">;</span>
-
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/login&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Footer</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Navbar</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/section&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Section</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Porém, se criarmos rotas dessa forma, precisaríamos adicionar vários componentes dentro do <code>element</code>. Em vez de chamarmos por componentes, podemos criar rotas e chamar por páginas.</p>
-<h3><strong>Passo 11: Criando páginas</strong></h3>
-<p>Para isso, dentro da pasta “src”, criaremos a pasta “pages” e, dentro dela, criaremos o arquivo “Home.tsx”. Nela, podemos retornar os componentes que criamos anteriormente:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Navbar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;../components/Navbar&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Section</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;../components/Section&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Footer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;../components/Footer&quot;</span><span class="p">;</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">Home</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Navbar</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Section</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Footer</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Também podemos criar uma página de login, criando o arquivo “Login.tsx”  dentro de “pages”:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Navbar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;../components/Navbar&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Footer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;../components/Footer&quot;</span><span class="p">;</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">Login</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Navbar</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Login</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Footer</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Agora, podemos organizar o arquivo <code>App.tsx</code> para criar os caminhos para cada página:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BrowserRouter</span><span class="p">,</span><span class="w"> </span><span class="n">Routes</span><span class="p">,</span><span class="w"> </span><span class="n">Route</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;react-router-dom&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Home</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./pages/Home&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Login</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./pages/Login&quot;</span><span class="p">;</span>
-
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Home</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/login&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Login</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Quando quisermos que um componente apareça em todas as páginas (por exemplo, o footer), podemos colocá-lo dentro do <code>BrowserRouter</code> em vez de adicioná-lo nos arquivos de cada página:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BrowserRouter</span><span class="p">,</span><span class="w"> </span><span class="n">Routes</span><span class="p">,</span><span class="w"> </span><span class="n">Route</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;react-router-dom&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Home</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./pages/Home&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Login</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./pages/Login&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Footer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Footer&quot;</span><span class="p">;</span>
-
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Home</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/login&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Login</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">        </span><span class="o">&lt;/</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">Footer</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Observe que <code>&lt;Footer /&gt;</code> não é uma rota, então não é necessário englobá-lo dentro de <code>Routes</code>, mas ele é um componente que queremos em todas as páginas. Se posteriormente o footer conter links, é necessário que ele esteja dentro do <code>BrowserRouter</code>.</p>
-<p>Podemos ainda organizar as rotas em um arquivo separadamente. Isso é eficiente para quando tivermos muitas rotas. Para isso, criaremos a pasta “routes” dentro de “src” e o arquivo “index.tsx” dentro dela contendo as rotas:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Route</span><span class="p">,</span><span class="w"> </span><span class="n">Routes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;react-router-dom&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Home</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;../pages/Home&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Login</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;../pages/Login&quot;</span><span class="p">;</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">AppRoutes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Home</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">Route</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/login&quot;</span><span class="w"> </span><span class="n">element</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="n">Login</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">    </span><span class="o">&lt;/</span><span class="n">Routes</span><span class="o">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Agora, precisamos chamar e importar as rotas no App.tsx:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BrowserRouter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;react-router-dom&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Footer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Footer&quot;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AppRoutes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./routes&quot;</span><span class="p">;</span>
-
-<span class="n">function</span><span class="w"> </span><span class="n">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">AppRoutes</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">        </span><span class="o">&lt;</span><span class="n">Footer</span><span class="w"> </span><span class="o">/&gt;</span>
-<span class="w">      </span><span class="o">&lt;/</span><span class="n">BrowserRouter</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;/&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">App</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Após todas as alterações que fizemos, a estrutura do nosso projeto ficará assim:</p>
-<div class="highlight"><pre><span></span><code>meu-primeiro-react/
-├── node_modules/         
-├── public/               
-├── src/                  
-│   ├── assets/           
-│   ├── components/       (Pasta criada para componentes)
-│   │     ├── Footer.tsx        
-│   │     ├── Navbar.tsx        
-│   │     └── Section.tsx       
-│   ├── pages/            (Pasta criada para páginas)
-│   │     ├── Home.tsx        
-│   │     └── Login.tsx       
-│   ├── routes/           (Pasta criada para rotas)
-│   │     └── index.tsx
-│   ├── App.tsx
-│   └── main.tsx
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── README.md
-├── tsconfig.app.json
-├── tsconfig.node.json
-├── tsconfig.json
-├── vite.config.js
-└── yarn.lock
-</code></pre></div>
-
-<h3><strong>O que você aprendeu no React até aqui:</strong></h3>
-<p><strong>Fundamentos</strong></p>
-<ul>
-<li>O que é React e por que usá-lo</li>
-<li>Diferença entre HTML/CSS/JS e React</li>
-<li>Criar um projeto com Vite + React + TypeScript</li>
-<li>Entender a função do index.html</li>
-<li>Compreender como o main.tsx conecta o React ao HTML</li>
-<li>Saber o papel do App.tsx como componente principal</li>
-</ul>
-<p><strong>Componentes</strong></p>
-<ul>
-<li>Criar e organizar componentes</li>
-<li>Importar e usar componentes dentro do App.tsx</li>
-<li>Usar fragmentos (<code>&lt;&gt; &lt;/&gt;</code>) para retornar múltiplos elementos</li>
-</ul>
-<p><strong>Roteamento com React Router</strong></p>
-<ul>
-<li>Instalar o react-router-dom</li>
-<li>Entender e usar <code>BrowserRouter</code>, <code>Routes</code> e <code>Route</code></li>
-<li>Criar navegação entre páginas</li>
-<li>Compreender o conceito de SPA (Single Page Application)</li>
+<li>Se tentar colocar um ID que não existe na URL, deve retornar <strong>404</strong>.</li>
+<li>Se tentar enviar sem o nome no JSON, deve retornar <strong>400</strong>.</li>
+<li>Se enviar tudo certo, ele retorna o objeto atualizado com status <strong>200 (OK)</strong>.</li>
 </ul>	
 
       
       <h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></h3>
-<h3 class="blogMeta">Tags: <span><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/react.html">react</a> / </span>
-<span><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/front-end.html">front-end</a> / </span>
+<h3 class="blogMeta">Tags: <span><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/nodejs.html">node.js</a> / </span>
+<span><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/back-end.html">back-end</a> / </span>
+<span><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/express.html">express</a> / </span>
 </h3>    
     </div><!-- end #blogItem -->
 	
@@ -787,14 +739,13 @@ export<span class="w"> </span>default<span class="w"> </span>App;
     
     <div class="blogItem">
     
-      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/como-criar-um-blog-com-pelican.html">Como criar um blog com Pelican</a></h2>
-      <h3>Tue 04 November 2025</h3>
+      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-nodejs-e-express.html">✧ Primeiros passos com Node.js e Express</a></h2>
+      <h3>Fri 06 March 2026</h3>
       
-      <p>Olá, pessoal!</p>
-<p>Como estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, estou sempre procurando ferramentas que me ajudem a documentar meus estudos e a criar projetos de forma eficiente. Recentemente, descobri o <strong>Pelican.</strong></p>
-<p>Ele é um Gerador de Sites Estáticos (SSG) construído em Python. Seu paradigma operacional difere fundamentalmente de CMSs …</p>	
+      <p>Node.js revolucionou a forma como o JavaScript é utilizado no desenvolvimento web. Antes restrita ao navegador, a linguagem passou a ser utilizada também no lado do servidor, permitindo que desenvolvedores criem aplicações completas utilizando apenas JavaScript.</p>
+<p>Entre as ferramentas mais populares dentro do ecossistema do Node.js está o …</p>	
 <h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></h3>
-	<a href="https://amandameneseso.github.io/diario-de-uma-dev/como-criar-um-blog-com-pelican.html">Continue reading …</a>
+	<a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-nodejs-e-express.html">Continue lendo …</a>
       
       
 	
@@ -804,13 +755,60 @@ export<span class="w"> </span>default<span class="w"> </span>App;
     
     <div class="blogItem">
     
-      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/01-02-03-como-a-matematica-do-computador-funciona.html">0.1 + 0.2 = 0.3? Como a matemática do computador funciona</a></h2>
+      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/bancos-de-dados-gratuitos.html">✧ Bancos de Dados Gratuitos</a></h2>
+      <h3>Thu 05 March 2026</h3>
+      
+      <p>Este artigo sintetiza uma análise sobre as principais opções de bancos de dados gratuitos disponíveis, destacando suas características, vantagens e limitações para orientar a seleção estratégica de tecnologia. A escolha de um banco de dados é fundamental para o armazenamento e gerenciamento estruturado de informações, sendo que as alternativas gratuitas …</p>	
+<h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/utilidades.html">Utilidades</a></h3>
+	<a href="https://amandameneseso.github.io/diario-de-uma-dev/bancos-de-dados-gratuitos.html">Continue lendo …</a>
+      
+      
+	
+    
+    </div><!-- end #blogItem -->
+        
+    
+    <div class="blogItem">
+    
+      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-react.html">✧ Primeiros passos com React</a></h2>
+      <h3>Thu 06 November 2025</h3>
+      
+      <p>Começar a estudar React pode parecer como tentar montar um quebra-cabeça sem a imagem da caixa. Muitos tutoriais pulam etapas ou assumem que você já entende o básico. Como eu acabei de passar por essa fase, decidi criar o guia que eu gostaria de ter tido. Este artigo é um …</p>	
+<h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></h3>
+	<a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-react.html">Continue lendo …</a>
+      
+      
+	
+    
+    </div><!-- end #blogItem -->
+        
+    
+    <div class="blogItem">
+    
+      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/como-criar-um-blog-com-pelican.html">✧ Como criar um blog com Pelican</a></h2>
+      <h3>Tue 04 November 2025</h3>
+      
+      <p>Olá, pessoal!</p>
+<p>Como estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, estou sempre procurando ferramentas que me ajudem a documentar meus estudos e a criar projetos de forma eficiente. Recentemente, descobri o <strong>Pelican.</strong></p>
+<p>Ele é um Gerador de Sites Estáticos (SSG) construído em Python. Seu paradigma operacional difere fundamentalmente de CMSs …</p>	
+<h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></h3>
+	<a href="https://amandameneseso.github.io/diario-de-uma-dev/como-criar-um-blog-com-pelican.html">Continue lendo …</a>
+      
+      
+	
+    
+    </div><!-- end #blogItem -->
+        
+    
+    <div class="blogItem">
+    
+      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/01-02-03-como-a-matematica-do-computador-funciona.html">✧ 0.1 + 0.2 = 0.3? Como a matemática do computador funciona</a></h2>
       <h3>Mon 03 November 2025</h3>
       
       <h3><strong>A conta que não fecha</strong></h3>
 <p>Se você já se aventurou na programação, talvez tenha encontrado um resultado que desafia a lógica. Digite <code>0.1 + 0.2</code> no console do JavaScript ou Python e, em vez do esperado <code>0.3</code>, você verá algo como <code>0.30000000000000004</code>. Como uma máquina capaz de …</p>	
 <h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/computacao.html">Computação</a></h3>
-	<a href="https://amandameneseso.github.io/diario-de-uma-dev/01-02-03-como-a-matematica-do-computador-funciona.html">Continue reading …</a>
+	<a href="https://amandameneseso.github.io/diario-de-uma-dev/01-02-03-como-a-matematica-do-computador-funciona.html">Continue lendo …</a>
       
       
 	

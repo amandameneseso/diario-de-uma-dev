@@ -5,7 +5,7 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   
-  <title>Diário de uma dev</title>
+  <title>✧ Aprofundando em Node.js e Express</title>
 <link href="https://amandameneseso.github.io/diario-de-uma-dev/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="https://amandameneseso.github.io/diario-de-uma-dev/" type="application/atom+xml" rel="alternate" title="Diário de uma dev ATOM Feed" />
   
@@ -48,7 +48,7 @@
             <h3>Categorias</h3>
             <ul>
 		     <li ><a href="https://amandameneseso.github.io/diario-de-uma-dev/category/computacao.html">Computação</a></li>
-		     <li ><a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></li>
+		     <li class="active"><a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></li>
 		     <li ><a href="https://amandameneseso.github.io/diario-de-uma-dev/category/utilidades.html">Utilidades</a></li>
 	    </ul>
 	</li>
@@ -78,14 +78,14 @@
   <div id="mainContent">
   	
  
-        
-  	
-    <div class="blogItem">
+
+
+<div class="blogItem">
     
       <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/aprofundando-em-nodejs-e-express.html">✧ Aprofundando em Node.js e Express</a></h2>
       <h3>Fri 06 March 2026</h3>
       
-      <p><strong>Entendendo o Repository Pattern</strong></p>
+  <p><strong>Entendendo o Repository Pattern</strong></p>
 <p>Continuando o artigo anterior (<a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-nodejs-e-express.html">Primeiros passos com Node.js e Express</a>), note que colocamos os dados dentro do Controller. Isso viola um pouco a separação de responsabilidades. O Controller deveria apenas gerenciar a regra, não guardar os dados. Em vez disso, ele deve pedir os dados.</p>
 <p>O Repository Pattern é um padrão de projeto que cria uma camada intermediária chamada <strong>Repository</strong>, que é responsável <strong>apenas por acessar os dados</strong> e que atua como uma camada de abstração entre a lógica de negócios (controller) de uma aplicação e a fonte de dados (banco de dados, seja ela um array, SQL, NoSQL, .json, API). Ele serve de mediador entre as camadas de domínio e de mapeamento de dados, permitindo um código mais limpo ao separar a lógica de acesso a dados em uma classe centralizada e especializada. Isso promove a testabilidade, reduz a duplicação e isola os objetos de domínio.</p>
 <p>Antes: controller ↔ data source</p>
@@ -723,7 +723,6 @@ request → midldlewares → controller → response
 <li>Se tentar enviar sem o nome no JSON, deve retornar <strong>400</strong>.</li>
 <li>Se enviar tudo certo, ele retorna o objeto atualizado com status <strong>200 (OK)</strong>.</li>
 </ul>	
-
       
       <h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></h3>
 <h3 class="blogMeta">Tags: <span><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/nodejs.html">node.js</a> / </span>
@@ -731,89 +730,8 @@ request → midldlewares → controller → response
 <span><a href="https://amandameneseso.github.io/diario-de-uma-dev/tag/express.html">express</a> / </span>
 </h3>    
     </div><!-- end #blogItem -->
-	
-        <div class="blogItem">
-                <h2>Outros artigos</h2>
-        </div>
-        
-    
-    <div class="blogItem">
-    
-      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-nodejs-e-express.html">✧ Primeiros passos com Node.js e Express</a></h2>
-      <h3>Fri 06 March 2026</h3>
-      
-      <p>Node.js revolucionou a forma como o JavaScript é utilizado no desenvolvimento web. Antes restrita ao navegador, a linguagem passou a ser utilizada também no lado do servidor, permitindo que desenvolvedores criem aplicações completas utilizando apenas JavaScript.</p>
-<p>Entre as ferramentas mais populares dentro do ecossistema do Node.js está o …</p>	
-<h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></h3>
-	<a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-nodejs-e-express.html">Continue lendo …</a>
-      
-      
-	
-    
-    </div><!-- end #blogItem -->
-        
-    
-    <div class="blogItem">
-    
-      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/bancos-de-dados-gratuitos.html">✧ Bancos de Dados Gratuitos</a></h2>
-      <h3>Thu 05 March 2026</h3>
-      
-      <p>Este artigo sintetiza uma análise sobre as principais opções de bancos de dados gratuitos disponíveis, destacando suas características, vantagens e limitações para orientar a seleção estratégica de tecnologia. A escolha de um banco de dados é fundamental para o armazenamento e gerenciamento estruturado de informações, sendo que as alternativas gratuitas …</p>	
-<h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/utilidades.html">Utilidades</a></h3>
-	<a href="https://amandameneseso.github.io/diario-de-uma-dev/bancos-de-dados-gratuitos.html">Continue lendo …</a>
-      
-      
-	
-    
-    </div><!-- end #blogItem -->
-        
-    
-    <div class="blogItem">
-    
-      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-react.html">✧ Primeiros passos com React</a></h2>
-      <h3>Thu 06 November 2025</h3>
-      
-      <p>Começar a estudar React pode parecer como tentar montar um quebra-cabeça sem a imagem da caixa. Muitos tutoriais pulam etapas ou assumem que você já entende o básico. Como eu acabei de passar por essa fase, decidi criar o guia que eu gostaria de ter tido. Este artigo é um …</p>	
-<h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></h3>
-	<a href="https://amandameneseso.github.io/diario-de-uma-dev/primeiros-passos-com-react.html">Continue lendo …</a>
-      
-      
-	
-    
-    </div><!-- end #blogItem -->
-        
-    
-    <div class="blogItem">
-    
-      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/como-criar-um-blog-com-pelican.html">✧ Como criar um blog com Pelican</a></h2>
-      <h3>Tue 04 November 2025</h3>
-      
-      <p>Olá, pessoal!</p>
-<p>Como estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, estou sempre procurando ferramentas que me ajudem a documentar meus estudos e a criar projetos de forma eficiente. Recentemente, descobri o <strong>Pelican.</strong></p>
-<p>Ele é um Gerador de Sites Estáticos (SSG) construído em Python. Seu paradigma operacional difere fundamentalmente de CMSs …</p>	
-<h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/tutoriais.html">Tutoriais</a></h3>
-	<a href="https://amandameneseso.github.io/diario-de-uma-dev/como-criar-um-blog-com-pelican.html">Continue lendo …</a>
-      
-      
-	
-    
-    </div><!-- end #blogItem -->
-        
-    
-    <div class="blogItem">
-    
-      <h2><a href="https://amandameneseso.github.io/diario-de-uma-dev/01-02-03-como-a-matematica-do-computador-funciona.html">✧ 0.1 + 0.2 = 0.3? Como a matemática do computador funciona</a></h2>
-      <h3>Mon 03 November 2025</h3>
-      
-      <h3><strong>A conta que não fecha</strong></h3>
-<p>Se você já se aventurou na programação, talvez tenha encontrado um resultado que desafia a lógica. Digite <code>0.1 + 0.2</code> no console do JavaScript ou Python e, em vez do esperado <code>0.3</code>, você verá algo como <code>0.30000000000000004</code>. Como uma máquina capaz de …</p>	
-<h3 class="blogMeta">By <a href="#">Amanda Meneses</a>, Category: <a href="https://amandameneseso.github.io/diario-de-uma-dev/category/computacao.html">Computação</a></h3>
-	<a href="https://amandameneseso.github.io/diario-de-uma-dev/01-02-03-como-a-matematica-do-computador-funciona.html">Continue lendo …</a>
-      
-      
-	
-    
-    </div><!-- end #blogItem -->
+				
+				<!-- end #content -->
   
   </div><!-- end #mainContent -->
 
