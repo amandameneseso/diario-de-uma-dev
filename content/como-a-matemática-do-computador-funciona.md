@@ -1,4 +1,4 @@
-Title: 0.1 + 0.2 = 0.3? Como a matemática do computador funciona
+Title: ✧ 0.1 + 0.2 = 0.3? Como a matemática do computador funciona
 Date: 2025-11-03
 Category: Computação
 Tags: matemática, computação

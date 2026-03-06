@@ -1,4 +1,4 @@
-Title: Como criar um blog com Pelican
+Title: ✧ Como criar um blog com Pelican
 Date: 2025-11-04
 Category: Tutoriais
 Tags: pelican, front-end

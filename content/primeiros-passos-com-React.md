@@ -1,4 +1,4 @@
-Title: Primeiros passos com React
+Title: ✧ Primeiros passos com React
 Date: 2025-11-06
 Category: Tutoriais
 Tags: react, front-end
